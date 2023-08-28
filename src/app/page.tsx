@@ -1,113 +1,140 @@
-import Image from 'next/image'
+import Image from "next/image"
 
-export default function Home() {
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Separator } from "@/components/ui/separator"
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import { Icons } from "@/components/icons"
+import { ThemeToggle } from "@/components/theme-toggle"
+
+const playList = ["rocks", "favorite", "programming", "dance", "love"]
+
+export default function homePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <section className="container mx-auto flex">
+      <aside className="w-80 space-y-2 p-6">
+        <div className="relative mb-6 h-10 w-32">
+          <Image src={"/logo.svg"} alt="hello" fill />
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        <div className="flex cursor-pointer items-center rounded-xl p-3 font-medium duration-150 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-900 dark:hover:text-gray-50">
+          <Icons.home className="mr-4 h-6 w-6" />
+          Home
+        </div>
+        <div className="flex cursor-pointer items-center rounded-xl p-3 font-medium duration-150 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-900 dark:hover:text-gray-50">
+          <Icons.search className="mr-4 h-6 w-6" />
+          Search
+        </div>
+        <div className="flex cursor-pointer items-center rounded-xl p-3 font-medium duration-150 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-900 dark:hover:text-gray-50">
+          <Icons.music className="mr-4 h-6 w-6" />
+          New Music
+        </div>
+        <Separator className="my-4" />
+        <div className="flex cursor-pointer items-center rounded-xl p-3 font-medium duration-150 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-900 dark:hover:text-gray-50">
+          <Icons.list className="mr-4 h-6 w-6" />
+          PlayList
+        </div>
+        <div className="space-y-2 pl-2">
+          {playList.map((l) => (
+            <p key={l} className="p-2">
+              {l}
+            </p>
+          ))}
+        </div>
+        <div className="flex cursor-pointer items-center rounded-xl p-3 font-medium duration-150 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-900 dark:hover:text-gray-50">
+          <Icons.add_feature className="mr-4 h-6 w-6" />
+          New PlayList
+        </div>
+      </aside>
+      <main className="flex-1 p-4">
+        <section className="mb-4 flex items-center justify-between">
+          <div className="relative flex items-center">
+            <Icons.search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2" />
+            <Input
+              placeholder="browse music"
+              className="w-64 rounded-full p-4 pl-10"
+            />
+          </div>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          </div>
+        </section>
+        <section className="flex items-end gap-4">
+          <div className="relative aspect-square w-64 rounded-2xl">
+            <Image
+              fill
+              src={"/cover.png"}
+              alt="cover"
+              className="rounded-[inherit]"
+            />
+          </div>
+          <div className="space-y-2">
+            <h1 className="text-4xl font-black text-gray-900 dark:text-gray-100">
+              Bale Ghoorban Ft Reza Pishroo 🔥
+            </h1>
+            <p className="font-medium">
+              Create by{" "}
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                Soheil Ghanbary
+              </span>
+            </p>
+          </div>
+        </section>
+        <Table className="mt-8">
+          <TableCaption>A list of your recent invoices.</TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Title</TableHead>
+              <TableHead>Artist</TableHead>
+              <TableHead>Views</TableHead>
+              <TableHead>Duration</TableHead>
+              <TableHead>Published</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>Song 1</TableCell>
+              <TableCell>Artist 1</TableCell>
+              <TableCell>1000</TableCell>
+              <TableCell>3:45</TableCell>
+              <TableCell>2023-08-28</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Song 2</TableCell>
+              <TableCell>Artist 2</TableCell>
+              <TableCell>1500</TableCell>
+              <TableCell>4:20</TableCell>
+              <TableCell>2023-08-29</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Song 3</TableCell>
+              <TableCell>Artist 3</TableCell>
+              <TableCell>800</TableCell>
+              <TableCell>3:10</TableCell>
+              <TableCell>2023-08-30</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Song 4</TableCell>
+              <TableCell>Artist 4</TableCell>
+              <TableCell>2000</TableCell>
+              <TableCell>5:00</TableCell>
+              <TableCell>2023-08-31</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </main>
+    </section>
   )
 }
